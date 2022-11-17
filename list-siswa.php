@@ -36,6 +36,10 @@
         <?php
         $sql = "SELECT * FROM calon_siswa";
         $query = mysqli_query($db, $sql);
+        if(!$query){
+            echo "Terjadi kesalahan dalam mengquery: ". $sql;
+            return;
+        }
         $total_siswa = 0;
         while($siswa = mysqli_fetch_array($query)){
             echo "<tr>";
@@ -61,6 +65,19 @@
     </table>
 
     <p>Total: <?php echo $total_siswa ?></p>
+    <?php if(isset($_GET['status'])): ?>
+    <p>
+        <?php
+            if($_GET['status'] == 'delsukses'){
+                echo "Penghapusan siswa berhasil!";
+            } else if($_GET['status'] == 'edsukses'){
+                echo "Penyuntingan berhasil";
+            } else{
+                echo "Tindakan gagal";
+            }
+        ?>
+    </p>
+    <?php endif; ?>
     <a href="index.php">Kembali</a>
     </body>
 </html>

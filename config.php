@@ -12,6 +12,6 @@ if(!$db){
     die("Gagal terhubung dengan database: " . mysqli_connect_error());
 }
 else{
-    echo "Berhasil terhubung ke database";
+    // echo "Berhasil terhusbung ke database";
 }
 ?>
