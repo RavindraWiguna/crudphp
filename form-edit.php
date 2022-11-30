@@ -35,7 +35,7 @@ if( mysqli_num_rows($query) < 1 ){
         <h3>Formulir Edit Siswa</h3>
     </header>
 
-    <form action="proses-edit.php" method="POST">
+    <form action="proses-edit.php" method="POST" enctype="multipart/form-data">
 
         <fieldset>
 
@@ -69,6 +69,10 @@ if( mysqli_num_rows($query) < 1 ){
         <p>
             <label for="sekolah_asal">Sekolah Asal: </label>
             <input type="text" name="sekolah_asal" placeholder="nama sekolah" value="<?php echo $siswa['sekolah_asal'] ?>" />
+        </p>
+        <p>
+            <!-- foto -->
+            <input type="file" name="foto" accept="image/png, image/jpeg">
         </p>
         <p>
             <input type="submit" value="Simpan" name="simpan" />
