@@ -16,7 +16,7 @@ if( isset($_GET['id']) ){
         // Cek apakah file foto sebelumnya ada di folder images
         if(is_file($siswa['path_foto'])){
             // Jika foto ada
-            unlink($siswa['foto']); // Hapus file foto sebelumnya yang ada di folder images
+            unlink($siswa['path_foto']); // Hapus file foto sebelumnya yang ada di folder images
             $infodebug="berhasilunlink";
         }else{
             $infodebug="bukanfile".$siswa['path_foto'];
