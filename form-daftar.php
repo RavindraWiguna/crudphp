@@ -11,7 +11,7 @@
         <h3>Formulir Pendaftaran Siswa Baru</h3>
     </header>
 
-    <form action="proses-pendaftaran.php" method="POST">
+    <form action="proses-pendaftaran.php" method="POST" enctype="multipart/form-data">
 
         <fieldset>
 
@@ -41,6 +41,10 @@
         <p>
             <label for="sekolah_asal">Sekolah Asal: </label>
             <input type="text" name="sekolah_asal" placeholder="nama sekolah" />
+        </p>
+        <p>
+            <!-- foto -->
+            <input type="file" name="foto" accept="image/png, image/jpeg">
         </p>
         <p>
             <input type="submit" value="Daftar" name="daftar" />

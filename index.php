@@ -25,7 +25,7 @@
             if($_GET['status'] == 'sukses'){
                 echo "Pendaftaran siswa baru berhasil!";
             } else {
-                echo "Pendaftaran gagal!";
+                echo "Pendaftaran gagal!, status=:".$_GET['status'];
             }
         ?>
     </p>
