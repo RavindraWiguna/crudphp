@@ -15,55 +15,57 @@
 
     <nav>
         <a href="form-daftar.php">[+] Tambah Baru</a>
+        <a href="cetakpdf.php">[+] Unduh PDF</a>
     </nav>
 
     <br>
 
-    <table border="1">
-    <thead>
-        <tr>
-            <th>No</th>
-            <th>Nama</th>
-            <th>Alamat</th>
-            <th>Jenis Kelamin</th>
-            <th>Agama</th>
-            <th>Sekolah Asal</th>
-            <th>Foto</th>
-            <th>Tindakan</th>
-        </tr>
-    </thead>
-    <tbody>
+    <div>
+        <table border="1" class="center">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Alamat</th>
+                <th>Jenis Kelamin</th>
+                <th>Agama</th>
+                <th>Sekolah Asal</th>
+                <th>Foto</th>
+                <th>Tindakan</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $sql = "SELECT * FROM calon_siswa";
+            $query = mysqli_query($db, $sql);
+            if(!$query){
+                echo "Terjadi kesalahan dalam mengquery: ". $sql;
+                return;
+            }
+            $total_siswa = 0;
+            while($siswa = mysqli_fetch_array($query)){
+                echo "<tr>";
 
-        <?php
-        $sql = "SELECT * FROM calon_siswa";
-        $query = mysqli_query($db, $sql);
-        if(!$query){
-            echo "Terjadi kesalahan dalam mengquery: ". $sql;
-            return;
-        }
-        $total_siswa = 0;
-        while($siswa = mysqli_fetch_array($query)){
-            echo "<tr>";
+                echo "<td>".$siswa['id']."</td>";
+                echo "<td>".$siswa['nama']."</td>";
+                echo "<td>".$siswa['alamat']."</td>";
+                echo "<td>".$siswa['jenis_kelamin']."</td>";
+                echo "<td>".$siswa['agama']."</td>";
+                echo "<td>".$siswa['sekolah_asal']."</td>";
+                echo "<td> <img src='".$siswa['path_foto']."' width='100' height='100' alt='foto".$siswa['nama']."'> </td>";
+                echo "<td>";
+                echo "<a href='form-edit.php?id=".$siswa['id']."'>Edit</a> | ";
+                echo "<a href='hapus.php?id=".$siswa['id']."'>Hapus</a>";
+                echo "</td>";
 
-            echo "<td>".$siswa['id']."</td>";
-            echo "<td>".$siswa['nama']."</td>";
-            echo "<td>".$siswa['alamat']."</td>";
-            echo "<td>".$siswa['jenis_kelamin']."</td>";
-            echo "<td>".$siswa['agama']."</td>";
-            echo "<td>".$siswa['sekolah_asal']."</td>";
-            echo "<td> <img src='".$siswa['path_foto']."' width='100' height='100' alt='foto".$siswa['nama']."'> </td>";
-            echo "<td>";
-            echo "<a href='form-edit.php?id=".$siswa['id']."'>Edit</a> | ";
-            echo "<a href='hapus.php?id=".$siswa['id']."'>Hapus</a>";
-            echo "</td>";
+                echo "</tr>";
+                $total_siswa+=1;
+            }
+            ?>
 
-            echo "</tr>";
-            $total_siswa+=1;
-        }
-        ?>
-
-    </tbody>
-    </table>
+        </tbody>
+        </table>
+    </div>
 
     <p>Total: <?php echo $total_siswa ?></p>
     <?php if(isset($_GET['status'])): ?>

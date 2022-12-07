@@ -7,15 +7,21 @@ body, html{
     /* font-family: 'Ubuntu', arial; */
     font-family: 'Kreon', arial;
     text-align: center;
-    background-image: linear-gradient(rgb(254, 172, 213), rgb(141, 10, 211));
+    justify-content: center;
+    background-image: linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255));
 }
 
 nav ul{
     list-style: none;
     display: flex;
-    /* border: solid 1px black; */
+    /* border: solid 1px black; */  
     justify-content: center;
 }
 nav ul li{
     margin-left: 10px;
+}
+
+.center{
+    margin-left: auto;
+    margin-right: auto;
 }
